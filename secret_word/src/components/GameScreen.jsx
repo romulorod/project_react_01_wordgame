@@ -30,6 +30,7 @@ const GameScreen = ({
   return (
     
     <div className="game">
+      
       <p className="points">
         <span>score:{score}</span>
       </p>
@@ -54,6 +55,7 @@ const GameScreen = ({
         <p>Tente adivinhar a letra</p>
         <form  onSubmit={handleSubmit}>
           <input type="text" name='letter' maxLength="1" required 
+          pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
           onChange={(e) =>setLetter(e.target.value)}
           ref ={letterInputRef}
           value={letter}/>

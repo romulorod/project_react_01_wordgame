@@ -130,10 +130,16 @@ const retry = () => {
   setGuesses(5)
   setGameStage(stages[0].name)
 }
+const clearInitial = () =>{
+  setScore(0)
+  setGuesses(5)
+
+}
 
   return (
     <div className="app">
-      {gameStage === "start" && <StartScreen startGame = {startGame} />}
+      
+      {gameStage === "start" && <StartScreen startGame = {startGame}  />}
       {gameStage === "game" && <GameScreen verifyLetter ={verifyLetter}
       pickedCategory = {pickedCategory} 
       pickedWord ={pickedWord} 
@@ -142,6 +148,7 @@ const retry = () => {
       wrongLetters ={wrongLetters} 
       guesses = {guesses}
       score = {score}
+      
        />}
       {gameStage === "end" && <EndScreen backToStart ={backToStart}
       retry = {retry} score = {score}/>}
