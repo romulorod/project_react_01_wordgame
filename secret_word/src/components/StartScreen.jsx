@@ -1,6 +1,7 @@
 import style from "./StartScreen.css"
 
 const StartScreen = ({startGame}) => {
+
   return (
     
     <div className="principal_screen">

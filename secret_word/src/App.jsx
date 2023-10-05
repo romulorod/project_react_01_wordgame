@@ -66,8 +66,6 @@ function App() {
     setLetters(letterArray)
 
 
-
-    
     setGameStage(stages[1].name)
   }
   const verifyLetter = (letter) =>{
@@ -139,7 +137,8 @@ const clearInitial = () =>{
   return (
     <div className="app">
       
-      {gameStage === "start" && <StartScreen startGame = {startGame}  />}
+      
+      {gameStage === "start" && <StartScreen startGame = {startGame} setGameStage ={setGameStage} />}
       {gameStage === "game" && <GameScreen verifyLetter ={verifyLetter}
       pickedCategory = {pickedCategory} 
       pickedWord ={pickedWord} 
