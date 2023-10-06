@@ -25,7 +25,7 @@ const numberScore = 5
 
 
 function App() {
-  const [gameStage,setGameStage] = useState(stages[0].name)
+  const [gameStage,setGameStage] = useState('start')
   const [word] = useState(wordsList)
 
   const [pickedWord,setPickedWord] = useState('')
@@ -37,7 +37,7 @@ function App() {
   const [guesses,setGuesses] = useState(numberScore)
   const [score,setScore] = useState(0)
 
-  const pickWordAndCategory = () =>{
+  const pickWordAndCategory = useCallback(() =>{
     const categories = Object.keys(word)
     const category = 
     categories[Math.floor(Math.random() * Object.keys(categories).length)]
@@ -48,10 +48,11 @@ function App() {
     = word[category][Math.floor(Math.random() * word[category].length)]
     
     return {category,randomWord}
-  };
-
+  },[word]);
   
-  const startGame = () =>{
+  
+  
+  const startGame = useCallback(() =>{
     const {category,randomWord} = pickWordAndCategory()
     //console.log(category,randomWord)
     clearLettersStates()
@@ -64,10 +65,13 @@ function App() {
     setPickedCategory(category)
     setPickedWord(randomWord)
     setLetters(letterArray)
-
-
     setGameStage(stages[1].name)
-  }
+    setScore(0)
+   
+
+
+    
+  },[pickWordAndCategory]);
   const verifyLetter = (letter) =>{
     const normalizedLetter = letter.toLowerCase()
 
@@ -110,8 +114,19 @@ function App() {
     //pontuação ++
     if(guessedLetters.length === uniqueLetters.length){
       setScore((actualScore) =>(actualScore +=100))
+      const {category,randomWord} = pickWordAndCategory()
+    //console.log(category,randomWord)
+      clearLettersStates()
 
-      startGame()
+      {/*Criando uma array de letras */}
+      let letterArray = randomWord.split("")
+
+      letterArray = letterArray.map((letra) => letra.toLowerCase())
+    
+      setPickedCategory(category)
+      setPickedWord(randomWord)
+      setLetters(letterArray)
+      
     }
 
   }, [guessedLetters,letters,startGame])
@@ -136,6 +151,8 @@ const clearInitial = () =>{
 
   return (
     <div className="app">
+      
+      
       
       
       {gameStage === "start" && <StartScreen startGame = {startGame} setGameStage ={setGameStage} />}
