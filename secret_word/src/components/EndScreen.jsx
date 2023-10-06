@@ -15,11 +15,11 @@ const EndScreen = ({backToStart,retry,score}) => {
       {score===400 && <h1>Você chegou muito longe</h1>}
       {score===500 && <h1>Jesus, man, você está roubando?</h1>}
       <div className="final_img">
-        {score <= 100 && <img src="gatinho_100.jpg" alt="gatinho"/> }
-        {score === 200 && <img src="gatinho_200.jpg" alt="gatinho" />}
-        {score === 300 && <img src="gatinho_300.jpg" alt="gatinho" /> }
-        {score === 400 && <img src="gatinho_400.jpg" alt="gatinho" /> }
-        {score === 500 && <img src="gatinho_500.jpg" alt="gatinho" /> }
+        {score <= 100 && <img src="src/assets/gatinho_100.jpg" alt="gatinho"/> }
+        {score === 200 && <img src="src/assets/gatinho_200.jpg" alt="gatinho" />}
+        {score === 300 && <img src="src/assets/gatinho_300.jpg" alt="gatinho" /> }
+        {score === 400 && <img src="src/assets/gatinho_400.jpg" alt="gatinho" /> }
+        {score === 500 && <img src="src/assets/gatinho_500.jpg" alt="gatinho" /> }
 
       </div>
       
