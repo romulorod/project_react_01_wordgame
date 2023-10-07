@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 {/*CSS IMPORTADOS */}
-import './/App.css'
+import './App.css'
 
 
 {/*Banco de dados */}
