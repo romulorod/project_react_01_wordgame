@@ -1,5 +1,5 @@
 import { useState,useRef } from 'react'
-import style from "./GameScreen.css"
+import  "./GameScreen.css"
 
 const GameScreen = ({
   verifyLetter,

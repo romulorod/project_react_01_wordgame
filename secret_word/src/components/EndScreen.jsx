@@ -1,4 +1,4 @@
-import style from "./EndScreen.css"
+import "./EndScreen.css"
 
 
 const EndScreen = ({backToStart,retry,score}) => {
