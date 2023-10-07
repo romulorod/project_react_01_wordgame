@@ -1,5 +1,5 @@
-import { useState,useRef } from 'react'
-import  "./GameScreen.css"
+import React, { useState, useRef } from 'react';
+import './GameScreen.css';
 
 const GameScreen = ({
   verifyLetter,
@@ -9,28 +9,23 @@ const GameScreen = ({
   guessedLetters,
   wrongLetters,
   guesses,
-  score
-
+  score,
 }) => {
-  const [letter,setLetter] = useState()
+  const [letter, setLetter] = useState();
 
-  const letterInputRef =  useRef(null)
+  const letterInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    verifyLetter(letter)
-    setLetter('')
+    verifyLetter(letter);
+    setLetter('');
 
-    letterInputRef.current.focus()
-    
-  }
-
+    letterInputRef.current.focus();
+  };
 
   return (
-    
     <div className="game">
-      
       <p className="points">
         <span>score:{score}</span>
       </p>
@@ -40,40 +35,40 @@ const GameScreen = ({
       </h3>
       <p>Você ainda tem {guesses} tentativas</p>
       <div className="wordContainer">
-      {letters.map((letter, i) =>
+        {letters.map((letter, i) =>
           guessedLetters.includes(letter) ? (
             <span className="letter" key={i}>
               <p>{letter}</p>
             </span>
           ) : (
             <span key={i} className="blankSquare"></span>
-          )
+          ),
         )}
-        
       </div>
       <div className="letterContainer">
         <p>Tente adivinhar a letra</p>
-        <form  onSubmit={handleSubmit}>
-          <input type="text" name='letter' maxLength="1" required 
-          pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
-          onChange={(e) =>setLetter(e.target.value)}
-          ref ={letterInputRef}
-          value={letter}/>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="letter"
+            maxLength="1"
+            required
+            pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+            onChange={(e) => setLetter(e.target.value)}
+            ref={letterInputRef}
+            value={letter}
+          />
           <button>Jogar</button>
         </form>
       </div>
       <div className="wrongLetterContainer">
         <p>Letras utilizadas:</p>
-        {wrongLetters.map((letter,i) =>(
+        {wrongLetters.map((letter, i) => (
           <span key={i}>{letter},</span>
-
         ))}
       </div>
-      
-    
     </div>
-    
-  )
-}
+  );
+};
 
-export default GameScreen
+export default GameScreen;
